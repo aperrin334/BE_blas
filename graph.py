@@ -24,6 +24,7 @@ xblas2 = datablas2[:,0]
 yblas2= datablas2[:,1]
 zblas2 = datablas2[:,2]
 
+#Figure USE_ADD
 fig1, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5))
 
 # Execution time
@@ -42,6 +43,7 @@ ax2.set_ylabel("Gflops/s")
 plt.tight_layout()
 plt.show()
 
+#Figure BLAS1
 fig2, (ax3, ax4) = plt.subplots(1, 2, figsize=(12, 5))
 
 ax3.plot(xblas1,yblas1, color='m')
@@ -56,6 +58,7 @@ ax4.set_ylabel("Gflops/s")
 plt.tight_layout()
 plt.show()
 
+#Figure BLAS2
 fig3, (ax5, ax6) = plt.subplots(1, 2, figsize=(12, 5))
 
 ax5.plot(xblas2,yblas2,color='g')
