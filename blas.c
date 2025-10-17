@@ -232,7 +232,7 @@ void inhouse_add_reorder(double* A, double* B, double* C, int N, int ld)
 
 void inhouse_dot(double* A, double* B, double* C, int N, int ld)
 {
-  #pragma omp // TO BE FINISHED
+  #pragma omp parallel
   for (int j = 0; j < N; j++)
     for (int k = 0; k < N; k++)
       for (int i = 0; i < N; i++)
@@ -257,7 +257,7 @@ void inhouse_blocking(double* A, double* B, double* C, int N, int ld)
 
 void init_matrix(double *A, int ld, int nrow, int ncol, double cst)
 {
-  #pragma omp // TO BE FINISHED
+  #pragma omp parallel
   for (int j = 0; j < ncol; j++)
     for (int i = 0; i < nrow; i++)
       A[i + ld*j] = cst / sqrt((double)nrow) / sqrt((double)ncol);
@@ -270,7 +270,7 @@ void init_matrix(double *A, int ld, int nrow, int ncol, double cst)
 double norm_matrix(double* A, int nrow, int ncol, int ld)
 {
   double norm = 0.;
-  #pragma omp // TO BE FINISHED
+  #pragma omp parallel
   for (int j = 0; j < ncol; j++)
     for (int i = 0; i < nrow; i++)
       norm += A[i + ld*j] * A[i + ld*j];

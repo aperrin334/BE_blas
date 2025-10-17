@@ -7,6 +7,8 @@ data2 = np.genfromtxt('timings_add-inorder.csv', delimiter='		', skip_header = 1
 datablas1 = np.genfromtxt('timings_BLAS1.csv', delimiter='		', skip_header = 1)
 datablas2 = np.genfromtxt('timings_BLAS2.csv', delimiter='		', skip_header = 1)
 datablas3 = np.genfromtxt('timings_BLAS3.csv', delimiter='		', skip_header = 1)
+datablas1ob = np.genfromtxt('timings_BLAS1_openblas.csv', delimiter='		', skip_header = 1)
+datablas2ob = np.genfromtxt('timings_BLAS2_openblas.csv', delimiter='		', skip_header = 1)
 datablas3ob = np.genfromtxt('timings_BLAS3_openblas.csv', delimiter='		', skip_header = 1)
 
 x1 = data1[:,0]
@@ -28,6 +30,14 @@ zblas2 = datablas2[:,2]
 xblas3 = datablas3[:,0]
 yblas3 = datablas3[:,1]
 zblas3 = datablas3[:,2]
+
+xblas1ob = datablas1ob[:,0]
+yblas1ob = datablas1ob[:,1]
+zblas1ob = datablas1ob[:,2]
+
+xblas2ob = datablas2ob[:,0]
+yblas2ob = datablas2ob[:,1]
+zblas2ob = datablas2ob[:,2]
 
 xblas3ob = datablas3ob[:,0]
 yblas3ob = datablas3ob[:,1]
@@ -68,7 +78,27 @@ ax4.plot(xblas3,zblas3,color='r', label='BLAS3')
 ax4.set_title("Evolution de la rapidité de calcul (Gflop/S)")
 ax4.set_xlabel("Dimension")
 ax4.set_ylabel("Gflops/s")
+plt.legend()
 plt.tight_layout()
 plt.show()
 
+#Figure BLAS1,2,3 avec optimisation openblas
+fig2, (ax5, ax6) = plt.subplots(1, 2, figsize=(12, 5))
+
+ax5.plot(xblas1ob,yblas1ob, color='gray', label='BLAS1')
+ax5.plot(xblas2ob,yblas2ob,color='g', label='BLAS2')
+ax5.plot(xblas3ob,yblas3ob,color='r', label='BLAS3')
+ax5.set_title("Evolution du temps moyen d'execution")
+ax5.set_xlabel("Dimension")
+ax5.set_ylabel("time (s)")
+
+ax6.plot(xblas1ob,zblas1ob,color='gray', label='BLAS1')
+ax6.plot(xblas2ob,zblas2ob,color='g', label='BLAS2')
+ax6.plot(xblas3ob,zblas3ob,color='r', label='BLAS3')
+ax6.set_title("Evolution de la rapidité de calcul (Gflop/S)")
+ax6.set_xlabel("Dimension")
+ax6.set_ylabel("Gflops/s")
+plt.legend()
+plt.tight_layout()
+plt.show()
 
