@@ -5,11 +5,11 @@
 #include <cblas.h>
 
 // Preprocessor defined global variables (must recompile program to change values)
-#define Nstart 8 // number of rows and columns of base matrix A, B, C
-#define step 8   // step to grow the problem size at each iteration
-#define nstep 128    // number of steps to perform
-#define ncase 100   // number of cases to run to obtain a mean time value
-#define BLOCK 32   // Block size for blocking version
+#define Nstart 128 // number of rows and columns of base matrix A, B, C
+#define step 64   // step to grow the problem size at each iteration
+#define nstep 32    // number of steps to perform
+#define ncase 10   // number of cases to run to obtain a mean time value
+#define BLOCK 64   // Block size for blocking version
 
 // Declaration of functions (defined after the main program to improve readability)
 void init_matrix(double*, int, int, int, double);
@@ -157,8 +157,8 @@ int main(void)
         // Initialization of the C matrix
         init_matrix(C, ld, N, N, 0.0);
         // Call to the routine coded by our hands defined below
-        inhouse_dot(A, B, C, N, ld);
-        // inhouse_blocking(A, B, C, N, ld);
+        // inhouse_dot(A, B, C, N, ld);
+        inhouse_blocking(A, B, C, N, ld);
       }
 
     #else
@@ -232,7 +232,11 @@ void inhouse_add_reorder(double* A, double* B, double* C, int N, int ld)
 
 void inhouse_dot(double* A, double* B, double* C, int N, int ld)
 {
+<<<<<<< HEAD
   #pragma omp parallel for shared(A, B, C) schedule(runtime)
+=======
+  #pragma omp parallel for schedule(runtime)
+>>>>>>> fef2049 (Save local changes before pulling)
   for (int j = 0; j < N; j++)
     for (int k = 0; k < N; k++)
       for (int i = 0; i < N; i++)
@@ -241,14 +245,14 @@ void inhouse_dot(double* A, double* B, double* C, int N, int ld)
 
 void inhouse_blocking(double* A, double* B, double* C, int N, int ld)
 {
-  #pragma omp // TO BE FINISHED
+  #pragma omp  parallel for schedule(runtime)
   for (int j = 0; j < N; j += BLOCK)
     for (int k = 0; k < N; k += BLOCK)
       for (int i = 0; i < N; i += BLOCK)
         for (int jj = 0; jj < BLOCK; jj++)
           for (int kk = 0; kk < BLOCK; kk++)
             for (int ii = 0; ii < BLOCK; ii++)
-              C[ii + ld*jj] += A[ii + ld*kk] * B[kk + ld*jj]; // TO BE FINISHED (indices!)
+              C[(i+ii) + ld*(j+jj)] += A[(i+ii) + ld*(k+kk)] * B[(k+kk) + ld*(j+jj)]; // TO BE FINISHED (indices!)
 }
 
 //-----------------------------------------------------------------------------
