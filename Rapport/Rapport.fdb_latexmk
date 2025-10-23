@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex Rapport"] 1761256780.00076 "Rapport.aux" "Rapport.bbl" "Rapport" 1761256862.84867 0
+["bibtex Rapport"] 1761257128.5838 "Rapport.aux" "Rapport.bbl" "Rapport" 1761257132.24827 0
   "./references.bib" 1761255168 0 d41d8cd98f00b204e9800998ecf8427e ""
   "C:/Users/alipe/AppData/Local/Programs/MiKTeX/bibtex/bst/bibtex/plain.bst" 1291864736 20613 bd3fbfa9f64872b81ac57a0dd2ed855f ""
-  "Rapport.aux" 1761256861 2579 0d2d2a320e31f8a10a4f3b2f09c34c2e "pdflatex"
+  "Rapport.aux" 1761257131 3255 597744246510e9c689217db649179874 "pdflatex"
   (generated)
   "Rapport.bbl"
   "Rapport.blg"
   (rewritten before read)
-["pdflatex"] 1761256859.86366 "c:/Users/alipe/Documents/4A/HPC/BE_blas/Rapport/Rapport.tex" "Rapport.pdf" "Rapport" 1761256862.84958 0
+["pdflatex"] 1761257128.90891 "c:/Users/alipe/Documents/4A/HPC/BE_blas/Rapport/Rapport.tex" "Rapport.pdf" "Rapport" 1761257132.24898 0
   "C:/Users/alipe/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1761254621 81068 299f700eb05b1217173e62b88b513bd0 ""
   "C:/Users/alipe/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/ecbx1000.pk" 1761254631 25420 7e7bbb41dcecb1d10984ac138c0e901c ""
   "C:/Users/alipe/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/ecbx1440.pk" 1751571396 40136 373e73b73845a877fd74adbf99fb0424 ""
@@ -194,15 +194,18 @@
   "C:/Users/alipe/AppData/Local/Programs/MiKTeX/tex/latex/xkeyval/xkeyval.sty" 1656236919 4937 4ce600ce9bd4ec84d0250eb6892fcf4f ""
   "C:/Users/alipe/AppData/Local/Programs/MiKTeX/tex/latex/zref/zref-abspage.sty" 1750428951 2269 2de6c7a5fd634dfef00a960544463a38 ""
   "C:/Users/alipe/AppData/Local/Programs/MiKTeX/tex/latex/zref/zref-base.sty" 1750428951 20785 198a9cb2e04238d92c320d0d9edbd76a ""
-  "Rapport.aux" 1761256861 2579 0d2d2a320e31f8a10a4f3b2f09c34c2e "pdflatex"
-  "Rapport.bbl" 1761256780 52 0eba253fc001332e731e8aba3f23127b "bibtex Rapport"
-  "Rapport.out" 1761256861 1028 a825329f6246b3391dd86bff8c293fbe "pdflatex"
-  "Rapport.tex" 1761256859 4379 20400ad81c65aa9035c7de727467c025 ""
-  "Rapport.toc" 1761256861 414 eeb76794e3ec46c5ccb6a54edc989743 "pdflatex"
-  "c:/Users/alipe/Documents/4A/HPC/BE_blas/Rapport/Rapport.tex" 1761256859 4379 20400ad81c65aa9035c7de727467c025 ""
+  "Rapport.aux" 1761257131 3255 597744246510e9c689217db649179874 "pdflatex"
+  "Rapport.bbl" 1761257128 52 0eba253fc001332e731e8aba3f23127b "bibtex Rapport"
+  "Rapport.out" 1761257131 1028 a825329f6246b3391dd86bff8c293fbe "pdflatex"
+  "Rapport.tex" 1761257123 4918 93149a8d62e7304214faf975b3f21e3c ""
+  "Rapport.toc" 1761257131 414 eeb76794e3ec46c5ccb6a54edc989743 "pdflatex"
+  "c:/Users/alipe/Documents/4A/HPC/BE_blas/Rapport/Rapport.tex" 1761257123 4918 93149a8d62e7304214faf975b3f21e3c ""
   "images/blanc.jpg" 1761255385 58288 24e3572b85aea18dcc922c59d35531e7 ""
   "images/fig1.png" 1761255781 73537 67ff4e9b021b5f1aa0df874905d5ad69 ""
   "images/fig2.png" 1761255855 59198 7078c8fb82612ac77ed343fa4db1bfa1 ""
+  "images/fig3.png" 1761256986 65508 944e6649469810efef87c3bbbf63aa41 ""
+  "images/fig4.png" 1761257076 126337 a16102213e452a0a2c7fdfc7b1ddfe8b ""
+  "images/fig5.png" 1761257089 111631 369ced27309ae7ff50fabf647e018c35 ""
   "images/logo_INSA.png" 1761254773 57250 ad97b2e655629fc9a0eea7f270841b71 ""
   "images/pattern.png" 1761254784 665 fe83adce64233a8663ea428bcd743171 ""
   (generated)
