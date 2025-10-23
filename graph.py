@@ -108,18 +108,20 @@ zs12 = datamuls12[:,2]
 fig1, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5))
 
 # Execution time
-ax1.plot(x1,y1, label='inhous_add')
+ax1.plot(x1,y1, label='inhouse_add')
 ax1.plot(x2, y2,label='inhouse_add_reorder')
 ax1.set_title("Evolution du temps moyen d'execution USE_ADD")
 ax1.set_xlabel("Dimension")
 ax1.set_ylabel("time (s)")
+plt.legend()
 
 # Calculation speed
-ax2.plot(x1, z1, label='inhous_add')
-ax2.plot(x2, z2, label='inhous_add_reorder')
+ax2.plot(x1, z1, label='inhouse_add')
+ax2.plot(x2, z2, label='inhouse_add_reorder')
 ax2.set_title("Evolution de la rapidité de calcul (Gflop/S) USE_ADD")
 ax2.set_xlabel("Dimension")
 ax2.set_ylabel("Gflops/s")
+plt.legend()
 plt.tight_layout()
 plt.show()
 
@@ -185,7 +187,6 @@ ax8.plot(xd12,zd12)
 ax8.set_title("Evolution de la rapidité de calcul (Gflop/S)")
 ax8.set_xlabel("Dimension")
 ax8.set_ylabel("Gflops/s")
-plt.legend()
 plt.tight_layout()
 plt.show()
 
@@ -211,6 +212,5 @@ ax10.plot(xs12,zs12)
 ax10.set_title("Evolution de la rapidité de calcul (Gflop/S)")
 ax10.set_xlabel("Dimension")
 ax10.set_ylabel("Gflops/s")
-plt.legend()
 plt.tight_layout()
 plt.show()
