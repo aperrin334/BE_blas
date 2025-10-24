@@ -87,7 +87,7 @@ de deux matrices denses \par}
     \vspace{1cm}
     {\huge Rapport de Burreau d'étude\par}
     \vspace{2cm}
-    {\Large \textbf{Prénom Nom et Alicia Perrin} \par}
+    {\Large \textbf{Luc-Christelle Nguyen et Alicia Perrin} \par}
     \vspace{2cm}
     
     {\Large \textbf{Institut National des Sciences Appliquées de Toulouse} \par}
@@ -106,9 +106,22 @@ de deux matrices denses \par}
 \newpage
 
 
+\chapter{Modifier l'accès à la mémoire pour additionner deux matrices}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\linewidth]{images/fig3.png}
+    \caption{Différences de performances en fonction de l'ordre d'accès à la mémoire}
+    \label{fig:3}
+\end{figure}
+
+Modification de l'ordre d'accès à la mémoire : On lit d'abord les lignes pour une meilleure utilisation du cache. L'efficassité est doublée en moyenne.
+
+
+
 \chapter{Compilation reliant les librairies OpenMP et BLAS}
 
-Ecrire qu'est-ce qu'on fait...
+ECRIRE EN FRANCAIS CE QUE FONT LES BLAS
 
 \begin{figure}[H]
     \centering
@@ -124,18 +137,10 @@ Ecrire qu'est-ce qu'on fait...
     \label{fig:2}
 \end{figure}
 
-Ecrire ce qu'on en conclut...
+On peut voir une nete amélioration des performances lorsque on utilise la librairie openblas qui ... mettre ce qu'elle fait ... .
+Pour BLAS3 5Gflops -> 400Gflops.
 
-\chapter{Modifier l'accès à la mémoire pour additionner deux matrices}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.7\linewidth]{images/fig3.png}
-    \caption{Différences de performances en fonction de l'ordre d'accès à la mémoire}
-    \label{fig:3}
-\end{figure}
-
-\chapter{Parallelisation OpenMP}
+\chapter{Parallelisation OpenMP CHANGER}
 
 \begin{figure}[H]
     \centering
@@ -151,7 +156,50 @@ Ecrire ce qu'on en conclut...
     \label{fig:5}
 \end{figure}
 
+Comparer les option de parallelisation Static et Dynamique avec des nombres de Thread différents. On peut remarquer que cchanger ses options n'a pas une réelle influence.
+
+\chapter{Nombre de threads utilisé pour BLAS3}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\linewidth]{images/fig6.png}
+    \caption{Trouver titre}
+    \label{fig:6}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\linewidth]{images/useCPU.png}
+    \caption{Trouver titre}
+    \label{fig:7}
+\end{figure}
+
+Fait des tests de 1 à 12. Le nombre optimal c'est 6 parce que plus on parrallelise, plus on doit partager des données entre les différents threads. 
+
+Expliquer que 6 threads qui ravail en permanence mais ce ne sont pas tout le temps les même.
+
 \chapter{Utiliser les blocs du cache}
+
+Expliquer la technique du block.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\linewidth]{images/fig7.png}
+    \caption{Trouver titre}
+    \label{fig:8}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\linewidth]{images/fig9.png}
+    \caption{Trouver titre}
+    \label{fig:9}
+\end{figure}
+
+On a commencé par une rechercher de la taille de block optimale en fonction de différentes tailles de matrices. On a choisi 32 (mieux que 64).
+
+Puis on a comparé cette technique avec openblas et la parralelisation.
+
+On peut observer que la librairie openblas est la meilleure solution pour optimiser les performances de calcul en partageant efficassemet les thread.
 
 \bibliographystyle{plain}
 \bibliography{references}
