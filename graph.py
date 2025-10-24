@@ -244,7 +244,7 @@ ax11.set_ylabel("time (s)")
 
 ax12.plot(xblas32112,zblas32112, label ='BLAS3')
 ax12.plot(xmulfunroll,zmulfunroll, label='mul_parallel')
-ax12.plot(xmulfunrollB,zmulfunrollB, label='mul_blocking')
+ax12.plot(xmulfunrollB,zmulfunrollB, label='mul_blocking taille 32')
 ax12.set_title("Evolution de la rapidité de calcul (Gflop/S)")
 ax12.set_xlabel("Dimension")
 ax12.set_ylabel("Gflops/s")
