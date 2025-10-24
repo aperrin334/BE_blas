@@ -22,6 +22,10 @@ datamuls6 = np.genfromtxt('timings_para_s6.csv', delimiter='		', skip_header = 1
 datamuls8 = np.genfromtxt('timings_para_s8.csv', delimiter='		', skip_header = 1)
 datamuls10 = np.genfromtxt('timings_para_s10.csv', delimiter='		', skip_header = 1)
 datamuls12 = np.genfromtxt('timings_para_s12.csv', delimiter='		', skip_header = 1)
+datablas32112 = np.genfromtxt('timings_BLAS3_2112.csv', delimiter='		', skip_header = 1)
+datamulfunroll = np.genfromtxt('timings_mul_funroll.csv', delimiter='		', skip_header = 1)
+datamulBfunroll = np.genfromtxt('timings_mul_blocking_funroll.csv', delimiter='		', skip_header = 1)
+
 
 
 x1 = data1[:,0]
@@ -103,6 +107,19 @@ zs10 = datamuls10[:,2]
 xs12 = datamuls12[:,0]
 ys12 = datamuls12[:,1]
 zs12 = datamuls12[:,2]
+
+xblas32112 = datablas32112[:,0]
+yblas32112 = datablas32112[:,1]
+zblas32112 = datablas32112[:,2]
+
+xmulfunroll= datamulfunroll[:,0]
+ymulfunroll = datamulfunroll[:,1]
+zmulfunroll = datamulfunroll[:,2]
+
+xmulfunrollB= datamulBfunroll[:,0]
+ymulfunrollB = datamulBfunroll[:,1]
+zmulfunrollB = datamulBfunroll[:,2]
+
 
 #Figure USE_ADD
 fig1, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5))
@@ -212,5 +229,25 @@ ax10.plot(xs12,zs12)
 ax10.set_title("Evolution de la rapidité de calcul (Gflop/S)")
 ax10.set_xlabel("Dimension")
 ax10.set_ylabel("Gflops/s")
+plt.tight_layout()
+plt.show()
+
+#Figure BLAS3, MUL_inhouse, MUL_blocking
+fig2, (ax11, ax12) = plt.subplots(1, 2, figsize=(12, 5))
+
+#ax11.plot(xblas32112,yblas32112)
+ax11.plot(xmulfunroll,ymulfunroll)
+ax11.plot(xmulfunrollB,ymulfunrollB)
+ax11.set_title("Evolution du temps moyen d'execution")
+ax11.set_xlabel("Dimension")
+ax11.set_ylabel("time (s)")
+
+#ax12.plot(xblas32112,zblas32112, label ='BLAS3')
+ax12.plot(xmulfunroll,zmulfunroll, label='mul_parallel')
+ax12.plot(xmulfunrollB,zmulfunrollB, label='mul_blocking')
+ax12.set_title("Evolution de la rapidité de calcul (Gflop/S)")
+ax12.set_xlabel("Dimension")
+ax12.set_ylabel("Gflops/s")
+plt.legend()
 plt.tight_layout()
 plt.show()
