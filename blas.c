@@ -282,7 +282,7 @@ double norm_matrix(double* A, int nrow, int ncol, int ld)
 //-----------------------------------------------------------------------------
 
 void print_matrix(double* A, int nrow, int ncol, int ld)
-{
+
   for (int i = 0; i < nrow; i++) {
     printf("(");
     for (int j = 0; j < ncol; j++)
