@@ -157,8 +157,8 @@ int main(void)
         // Initialization of the C matrix
         init_matrix(C, ld, N, N, 0.0);
         // Call to the routine coded by our hands defined below
-        inhouse_dot(A, B, C, N, ld);
-        //inhouse_blocking(A, B, C, N, ld);
+        // inhouse_dot(A, B, C, N, ld);
+        inhouse_blocking(A, B, C, N, ld);
       }
 
     #else
@@ -232,7 +232,7 @@ void inhouse_add_reorder(double* A, double* B, double* C, int N, int ld)
 
 void inhouse_dot(double* A, double* B, double* C, int N, int ld)
 {
-  #pragma omp parallel for schedule(runtime)
+  #pragma omp parallel for shared(A, B, C) schedule(runtime)
   for (int j = 0; j < N; j++)
     for (int k = 0; k < N; k++)
       for (int i = 0; i < N; i++)
