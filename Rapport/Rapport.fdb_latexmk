@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex Rapport"] 1761317034.46145 "Rapport.aux" "Rapport.bbl" "Rapport" 1761317045.99548 0
+["bibtex Rapport"] 1761643113.69222 "Rapport.aux" "Rapport.bbl" "Rapport" 1761643419.42106 0
   "./references.bib" 1761255168 0 d41d8cd98f00b204e9800998ecf8427e ""
   "C:/Users/alipe/AppData/Local/Programs/MiKTeX/bibtex/bst/bibtex/plain.bst" 1291864736 20613 bd3fbfa9f64872b81ac57a0dd2ed855f ""
-  "Rapport.aux" 1761317043 4298 37d283e1db9aca151173ab9d8de5cd02 "pdflatex"
+  "Rapport.aux" 1761643418 4723 df758e7458227ef2f6bb1a01b96d8bb7 "pdflatex"
   (generated)
   "Rapport.bbl"
   "Rapport.blg"
   (rewritten before read)
-["pdflatex"] 1761317035.34853 "c:/Users/alipe/Documents/4A/HPC/BE_blas/Rapport/Rapport.tex" "Rapport.pdf" "Rapport" 1761317045.99699 0
+["pdflatex"] 1761643415.20834 "c:/Users/alipe/Documents/4A/HPC/BE_blas/Rapport/Rapport.tex" "Rapport.pdf" "Rapport" 1761643419.42184 0
   "C:/Users/alipe/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1761254621 81068 299f700eb05b1217173e62b88b513bd0 ""
   "C:/Users/alipe/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/ecbx1000.pk" 1761254631 25420 7e7bbb41dcecb1d10984ac138c0e901c ""
   "C:/Users/alipe/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/ecbx1440.pk" 1751571396 40136 373e73b73845a877fd74adbf99fb0424 ""
@@ -194,12 +194,12 @@
   "C:/Users/alipe/AppData/Local/Programs/MiKTeX/tex/latex/xkeyval/xkeyval.sty" 1656236919 4937 4ce600ce9bd4ec84d0250eb6892fcf4f ""
   "C:/Users/alipe/AppData/Local/Programs/MiKTeX/tex/latex/zref/zref-abspage.sty" 1750428951 2269 2de6c7a5fd634dfef00a960544463a38 ""
   "C:/Users/alipe/AppData/Local/Programs/MiKTeX/tex/latex/zref/zref-base.sty" 1750428951 20785 198a9cb2e04238d92c320d0d9edbd76a ""
-  "Rapport.aux" 1761317043 4298 37d283e1db9aca151173ab9d8de5cd02 "pdflatex"
-  "Rapport.bbl" 1761317035 52 0eba253fc001332e731e8aba3f23127b "bibtex Rapport"
-  "Rapport.out" 1761317043 1312 d91545ff71ba8af4bcddd3882a1bdeaa "pdflatex"
-  "Rapport.tex" 1761317025 6771 d4c97c148779ec4f550a0fe59a7434e2 ""
-  "Rapport.toc" 1761317043 515 f20364f04a6767e1351960c6e865a0b5 "pdflatex"
-  "c:/Users/alipe/Documents/4A/HPC/BE_blas/Rapport/Rapport.tex" 1761317025 6771 d4c97c148779ec4f550a0fe59a7434e2 ""
+  "Rapport.aux" 1761643418 4723 df758e7458227ef2f6bb1a01b96d8bb7 "pdflatex"
+  "Rapport.bbl" 1761643113 52 0eba253fc001332e731e8aba3f23127b "bibtex Rapport"
+  "Rapport.out" 1761643418 1416 165b465c04ad7227ce5450a955cd52ec "pdflatex"
+  "Rapport.tex" 1761643414 9916 7fc568a296dd7eec13369de20c52f4bd ""
+  "Rapport.toc" 1761643418 534 20485656d1cf29c19b21201747fb3e4c "pdflatex"
+  "c:/Users/alipe/Documents/4A/HPC/BE_blas/Rapport/Rapport.tex" 1761643414 9916 7fc568a296dd7eec13369de20c52f4bd ""
   "images/blanc.jpg" 1761255385 58288 24e3572b85aea18dcc922c59d35531e7 ""
   "images/fig1.png" 1761255781 73537 67ff4e9b021b5f1aa0df874905d5ad69 ""
   "images/fig2.png" 1761255855 59198 7078c8fb82612ac77ed343fa4db1bfa1 ""

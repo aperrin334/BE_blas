@@ -97,7 +97,7 @@ de deux matrices denses \par}
 
 % Résumé concis, souvent utilisé pour donner un aperçu rapide du contenu d'une recherche ou d'un article académique.
 \begin{abstract}
-  Dans ce rapport, nous allons tester plusieurs méthodes différentes afin d'optimiser des calculs matriciels (somme, produit scalaire, produit matricielle). A COMPLETER
+    Dans ce rapport, nous présenterons différentes méthodes d’optimisation et de parallélisation appliquées aux calculs sur des matrices denses. Nous commencerons par étudier l’impact de l’ordre d’accès à la mémoire sur les performances, en exploitant la proximité spatiale des données afin d’améliorer l’utilisation du cache.Nous explorerons ensuite l’utilisation des bibliothèques OpenMP et OpenBLAS dans le but d’accélérer les calculs. L’analyse des trois niveaux de routines BLAS (BLAS1, BLAS2, BLAS3) mettra en évidence les gains considérables que l’on pourra obtenir grâce à OpenBLAS. Nous testerons également différentes stratégies de parallélisation (options static et dynamic) et nous étudierons l’impact du nombre de threads utilisés sur les performances globales. Enfin, nous mettrons en œuvre une optimisation basée sur la division en blocs (cache blocking) afin de mieux exploiter la hiérarchie mémoire.
 \end{abstract}
 
 % Table des matières
@@ -108,6 +108,8 @@ de deux matrices denses \par}
 
 \chapter{Modifier l'accès à la mémoire pour additionner deux matrices}
 
+La première optimisation dont nous nous sommes servis utilise la proximité spatiale des informations. Nous avons fait en sorte que, pour l'addition de deux matrices, l'algorithme parcourt d'abord les lignes et ensuite les colonnes. En effet, une matrice est stockée en mémoire ligne par ligne. Lorsque la fonction va aller chercher la première valeur de la matrice, elle va remplir le cache de avec les valeurs suivantes. Ainsi, grâce à une bonne utilisation du cache, un grand nombre d'accès mémoire sont évités, ce qui permet d'augmenter la performance du programme.
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\linewidth]{images/fig3.png}
@@ -115,13 +117,19 @@ de deux matrices denses \par}
     \label{fig:3}
 \end{figure}
 
-Modification de l'ordre d'accès à la mémoire : On lit d'abord les lignes pour une meilleure utilisation du cache. L'efficassité est doublée en moyenne.
 
+On peut remarquer sur ces simulations que la rapidité de calcul a doublé en moyenne (cf \ref{fig:3}). C'est donc un critère important à prendre en compte lors de l'élaboration d'un programme.
 
 
 \chapter{Compilation reliant les librairies OpenMP et BLAS}
 
-ECRIRE EN FRANCAIS CE QUE FONT LES BLAS
+Il y a trois routines BLAS (Basic Linear Algebra Subprograms) différentes, qui sont des fonctions standards pour effectuer des calculs de base en algèbre linéaire :
+\begin{itemize}
+    \item BLAS1 : ce sont des opérations vecteur-vecteur. Pour effectuer un produit matrice-matrice en utilisant uniquement des routines BLAS1, il faut appeler la routine pour chaque élément de la matrice résultat (car chaque élément est le produit scalaire d'une ligne et d'une colonne).
+    \item BLAS2 : ce sont des opérations matrice-vecteur. Pour calculer un produit matrice-matrice avec des routines BLAS2, il faut appeler la routine pour chaque colonne de la matrice résultat.
+    \item BLAS3 : ce sont des opérations matrice-matrice. Un seul appel de la routine permet de calculer tout le produit matriciel.
+\end{itemize}
+
 
 \begin{figure}[H]
     \centering
@@ -137,26 +145,28 @@ ECRIRE EN FRANCAIS CE QUE FONT LES BLAS
     \label{fig:2}
 \end{figure}
 
-On peut voir une nete amélioration des performances lorsque on utilise la librairie openblas qui ... mettre ce qu'elle fait ... .
-Pour BLAS3 5Gflops -> 400Gflops.
+Lors de ces simulations, nous avons voulu premièrement montrer la différence d'efficacité entre les différents BLAS (cf. \ref{fig:1}). On remarque que BLAS3 est légèrement meilleure que les autres, du fait qu'il ne fait appel qu'à une seule fonction.
+Puis nous avons voulu montrer la nette amélioration des performances lorsque nous utilisons la librairie OpenBLAS. C'est une version rapide et optimisée des routines BLAS. Elle utilise des optimisations spécifiques au processeur pour exploiter au mieux les instructions vectorielles et le calcul parallèle sur plusieurs cœurs. La différence de performance est énorme. Par exemple, pour BLAS3 la rapidité de calculs passe de 5Gflops à 400Gflops (cf \ref{fig:2}).
 
-\chapter{Parallelisation OpenMP CHANGER}
+\chapter{Options de parallelisation d'un produit matriciel}
+
+Dans cette partie, nous nous sommes concentrées sur l'optimisation par la parallélisation des tâches. Dans les simulations qui suivent, nous avons voulu tester les différentes options de parallélisation.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\linewidth]{images/fig4.png}
-    \caption{Trouver titre}
+    \caption{Performances d'un calcul matriciel parallélisé avec l'option static et différents nombres de coeurs disponibles}
     \label{fig:4}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\linewidth]{images/fig5.png}
-    \caption{Trouver titre}
+    \caption{Performances d'un calcul matriciel parallélisé avec l'option dynamic et différents nombres de coeurs disponibles}
     \label{fig:5}
 \end{figure}
 
-Comparer les option de parallelisation Static et Dynamique avec des nombres de Thread différents. On peut remarquer que cchanger ses options n'a pas une réelle influence.
+Nous pouvons remarquer que changer ces options n'a aucune influence réelle sur la performance du programme.
 
 \chapter{Nombre de threads utilisé pour BLAS3}
 \begin{figure}[H]
