@@ -108,7 +108,7 @@ de deux matrices denses \par}
 
 \chapter{Modifier l'accès à la mémoire pour additionner deux matrices}
 
-La première optimisation dont nous nous sommes servis utilise la proximité spatiale des informations. Nous avons fait en sorte que, pour l'addition de deux matrices, l'algorithme parcourt d'abord les lignes et ensuite les colonnes. En effet, une matrice est stockée en mémoire ligne par ligne. Lorsque la fonction va aller chercher la première valeur de la matrice, elle va remplir le cache de avec les valeurs suivantes. Ainsi, grâce à une bonne utilisation du cache, un grand nombre d'accès mémoire sont évités, ce qui permet d'augmenter la performance du programme.
+La première optimisation dont nous nous sommes servis utilise la proximité spatiale des informations. Nous avons fait en sorte que, pour l'addition de deux matrices, l'algorithme parcourt d'abord les colonnes et ensuite les lignes. En effet, une matrice est stockée en mémoire en column-major. Lorsque la fonction va aller chercher la première valeur de la matrice, elle va remplir le cache de avec les valeurs suivantes. Ainsi, grâce à une bonne utilisation du cache, un grand nombre d'accès mémoire sont évités, ce qui permet d'augmenter la performance du programme.
 
 \begin{figure}[H]
     \centering
