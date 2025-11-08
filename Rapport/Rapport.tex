@@ -108,7 +108,7 @@ de deux matrices denses \par}
 
 \chapter{Modifier l'accès à la mémoire pour additionner deux matrices}
 
-La première optimisation dont nous nous sommes servis utilise la proximité spatiale des informations. Nous avons fait en sorte que, pour l'addition de deux matrices, l'algorithme parcourt d'abord les colonnes et ensuite les lignes. En effet, une matrice est stockée en mémoire en column-major. Lorsque la fonction va aller chercher la première valeur de la matrice, elle va remplir le cache de avec les valeurs suivantes. Ainsi, grâce à une bonne utilisation du cache, un grand nombre d'accès mémoire sont évités, ce qui permet d'augmenter la performance du programme.
+La première optimisation dont nous nous sommes servis utilise la proximité spatiale des informations. Nous avons fait en sorte que, pour l'addition de deux matrices, l'algorithme parcourt d'abord les colonnes et ensuite les lignes. En effet, une matrice est stockée en mémoire en column-major. Lorsque la fonction va aller chercher la première valeur de la matrice, elle va remplir le cache avec les valeurs suivantes. Ainsi, grâce à une bonne utilisation du cache, un grand nombre d'accès mémoire sont évités, ce qui permet d'augmenter la performance du programme.
 
 \begin{figure}[H]
     \centering
@@ -168,51 +168,48 @@ Dans cette partie, nous nous sommes concentrées sur l'optimisation par la paral
 
 Nous pouvons remarquer que changer ces options n'a aucune influence réelle sur la performance du programme.
 
-\chapter{Nombre de threads utilisé pour BLAS3}
+\chapter{Recherche du nombre de threads optimal pour BLAS3}
+
+Dans cette partie nous nous sommes intéressées à l'influence du nombre de threads utilisés sur la rapidiré de calcul et le temps d'éxecution de BLAS3.
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\linewidth]{images/fig6.png}
-    \caption{Trouver titre}
+    \caption{Performance de BLAS3 en utilisant 1 à 12 threads lors de son éxecution}
     \label{fig:6}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\linewidth]{images/useCPU.png}
-    \caption{Trouver titre}
+    \caption{Historique d'utilisation des threads pendant l'éxecution BLAS3}
     \label{fig:7}
 \end{figure}
 
-Fait des tests de 1 à 12. Le nombre optimal c'est 6 parce que plus on parrallelise, plus on doit partager des données entre les différents threads. 
+En faisant les simulations de BLAS3 avec 1 à 12 threads, nous observons que les performances de BLAS3 sont optimales lorsque le CPU utilise 6 threads sur les 12 disponibles (cf. \ref{fig:6}). En effet, en introduisant plus de 6 threads, les ressources sont partagées entre davantage de threads, ce qui diminue les performances de BLAS3.
+De plus, en surveillant l'historique d'utilisation du CPU lors de l'exécution de BLAS3 avec 6 threads (cf. \ref{fig:7}), nous remarquons que, bien que 6 threads soient utilisés en permanence, ce ne sont pas les mêmes qui sont actifs tout au long de l'exécution.
 
-Expliquer que 6 threads qui ravail en permanence mais ce ne sont pas tout le temps les même.
+\chapter{La cache blocking pour optimiser la multiplication matrice-matrice}
 
-\chapter{Utiliser les blocs du cache}
-
-Expliquer la technique du block.
+Dans le cadre de cette approche, nous cherchons à utiliser la mémoire cache de manière optimale en apportant des modifications à notre algorithme de multiplication matrice-matrice pour appliquer le principe de localité. Nous avons ainsi divisé les matrices en sous-blocs de taille adaptée au cache, permettant de maximiser la réutilisation des données dans les caches.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\linewidth]{images/fig7.png}
-    \caption{Trouver titre}
+    \includegraphics[width=0.7\linewidth]{images/fig7_dim.png}
+    \caption{Performance de calculs en fonction de la taille de block utilisée pour différentes tailles de matrices}
     \label{fig:8}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\linewidth]{images/fig9.png}
-    \caption{Trouver titre}
+    \caption{Performance de la méthode cache blocking, de BLAS3 et de la méthode de parallélisation}
     \label{fig:9}
 \end{figure}
 
-On a commencé par une rechercher de la taille de block optimale en fonction de différentes tailles de matrices. On a choisi 32 (mieux que 64).
+Nous nous sommes dans un premier temps penchées sur la taille de bloc optimale pour notre cache. En utilisant la méthode de blocking, nous cherchons à étudier les performances des calculs en fonction de la taille du bloc pour différentes tailles de matrices. Nous observons une taille de bloc optimal de 32 pour les petites dimensions (256 et 512) et de 64 pour les grandes dimensions.  Nous avons choisi de continuer nos simulations avec un bloc de taille 32 qui nous paraît un meilleur compromis entre les petites et grandes dimensions. En effet, avec un bloc de taille 64, on observe une chute importante de la performance pour les matrices de taille 512.  (cf. \ref{fig:8}).
 
-Puis on a comparé cette technique avec openblas et la parralelisation.
-
-On peut observer que la librairie openblas est la meilleure solution pour optimiser les performances de calcul en partageant efficassemet les thread.
-
-\bibliographystyle{plain}
-\bibliography{references}
-
+Enfin, nous avons cherché à comparer les performances de cette méthode à celles de la parallélisation et de BLAS3 de la librairie OpenBLAS. On observe un seuil de taille de matrice à partir duquel les performances de BLAS3 sont bien meilleures que celles de la méthode de parallélisation ou de cache-blocking. Ce seuil se situe entre 750 et 1000 (cf. \ref{fig:9}). En dessous du seuil, c'est la méthode de cache blocking qui est plus performante, suivie de la parallélisation. À l'inverse. 
+Les simulations démontrent la supériorité nette des méthodes de la librairie OpenBLAS pour optimiser les performances des calculs sur de grandes dimensions.
 
 \end{document}
